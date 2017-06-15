@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function register() {
+            const name = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            $.ajax({
+                url: '/register',
+                type: 'POST',
+                data:{name,password},
+                success:(data)=>{
+                    console.log(data);
+                    location.href='/login';
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+用户名：<input type="text" id="username">
+密码: <input type="password" id="password">
+<button onclick="register()">注册</button>
+</body>
+</html>

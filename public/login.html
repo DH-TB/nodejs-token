@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script>
+        function login() {
+            const name = $('#username').val();
+            const password = $('#password').val();
+            $.ajax({
+                url: '/login',
+                type: 'POST',
+                data: {name, password},
+                success: (data)=> {
+                    $.ajax({
+                        url: '/getName',
+                        type: 'GET',
+                        data: {token: data.token},
+                        success: (doc)=> {
+                            $('#userInfo').text(JSON.stringify(doc));
+                        }
+                    });
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+用户名：<input type="text" id="username">
+密码: <input type="password" id="password">
+<button onclick="login()">登录</button>
+<div>
+    得到的用户信息：<span id="userInfo"></span>
+</div>
+</body>
+</html>
