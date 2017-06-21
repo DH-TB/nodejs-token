@@ -33,7 +33,7 @@ app.post('/register', function (req, res, next) {
 
 mongoose.connect(config.url);
 
-/*
+
  app.post('/login', function (req, res, next) {
  User.findOne({name: req.body.name}, function (err, user) {
  if (err) return next(err);
@@ -76,7 +76,7 @@ mongoose.connect(config.url);
  });
  }
  });
- */
+
 
 const port = process.env.PORT || config.port;
 app.listen(port,()=>{
